@@ -1,0 +1,620 @@
+/* ==UserStyle==
+@name         Better ChatGPT by okkidwi
+@version      1.0
+@namespace    https://t.me/okkidwi
+@description  A CSS modification for Open AI ChatGPT FREE & PLUS version with visual improvements | Support light and dark mode
+@author       Okki Dwi
+@license      GNU General Public License v3.0
+==/UserStyle== */
+
+@-moz-document domain("chat.openai.com") {
+    
+       
+/* Font Customization */    
+
+    html {
+        --font-text: Segoe UI Variable, Segoe UI Variable Text, Segoe UI, Helvetica Neue, Helvetica, -system-ui, sans-serif;
+        --font-display: Segoe UI Variable Display, Segoe UI Variable, Segoe UI, Helvetica Neue, Helvetica, -system-ui, sans-serif;
+        font-family: var(--font-text);
+    }
+
+
+/* Add Blurry Background*/ 
+
+    body {
+        background: var(--bg);
+        background-size: cover;
+        height: 100vh;
+        width: 100vw;
+
+        /* Weird issue with scrollbar fix */
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    body > div {
+        backdrop-filter: blur(10px);
+    }
+
+
+/* ChatGPT Logo Redesign */
+    
+    /* Logo Customization */
+    
+        .text-4xl {
+            font-size: 50px;
+            opacity: 100%;
+            position: absolute;
+            top: 20%;
+            left: 50.5%;
+            transform: translate(-50%, -50%);
+        }
+    
+        .justify-center.items-center.gap-2.flex.sm\:mb-16.mb-10.mr-auto.ml-auto.sm\:mt-\[20vh\].mt-6.text-center.font-semibold.text-4xl {
+            position: absolute;
+            top: 18%;        
+        }
+    
+    /* Add a Fake "PLUS" Logo */
+    
+        .text-4xl::after {
+            content: "PLUS";
+            display: inline-block;
+            margin-left: 4px;
+            border-radius: 6px;
+            background-color: #f7c86c;
+            padding-left: 6px;
+            padding-right: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #2D3748;
+        }
+ 
+    
+/* Hide "Examples, Capabilities and Limitations" Columns (FREE Version) */
+    
+    .gap-3\.5.text-center.items-start.md\:flex {
+        display: none;
+    }
+
+
+/* Text Input and Output Blocks Area */
+
+    /* Wider and Bigger Customization */
+    
+        .xl\:max-w-3xl, .lg\:max-w-3xl {
+            max-width: 950px;
+        } 
+
+        textarea[data-id] {
+            min-height: 48px !important;
+        }
+
+    /* Add a Click Animation */
+
+        textarea {
+            margin-bottom: 3px !important;
+        }
+
+        textarea:focus {
+            margin-bottom: 0 !important;
+        }
+
+        form > div > div:last-child {
+            position: relative;
+        }
+
+
+/* Remove the "Free Research Preview" Text from the Footer */    
+    
+    form ~ div {
+        font-size: 0 !important;
+    }
+    
+    form ~ div a {
+        font-size: 13px;
+    } 
+    
+    form ~ div a::after {
+        content: ". ChatGPT may produce inaccurate information about people, places, or facts.";
+        display: inline-block;
+        font-size: 13px;
+  
+    }
+
+    
+/* Hide "Upgrade to PLUS" Menu (FREE Version) / "My Plan" Menu (PLUS Version) | 
+    Change "display: none;" to "display: visible;" if your ChatGPT Extension is doesn't work or 
+    you want to access the "Upgrade to PLUS" Menu (FREE Version) / "My Plan" Menu (PLUS Version) */
+    
+    .rounded-md.hover\:bg-gray-800.text-sm.cursor-pointer.text-white.duration-200.transition-colors.gap-3.items-center.p-3.flex {
+        display: none;  
+    }
+
+
+/* Hide "UseChatGPT.AI" Extension Promotion Menu from Navigation Menu */    
+    
+    .chatgpt-ad.flex-shrink-0.mb-1.hover\:bg-gray-500\/10.border-white\/20.border.rounded-md.text-sm.cursor-pointer.text-white.duration-200.transition-colors.gap-3.items-center.px-3.py-3.flex,
+    .chatgpt-ad.flex-grow.flex-shrink-0.h-11.hover\:bg-gray-500\/10.border-white\/20.border.rounded-md.text-sm.cursor-pointer.text-white.duration-200.transition-colors.gap-3.items-center.p-3.flex {
+        display: none;    
+    }
+
+    
+/* Change the "Copy" Button Icon Position */
+    
+    .disabled\:dark\:hover\:text-gray-400.dark\:hover\:text-gray-200.dark\:hover\:bg-gray-700.dark\:text-gray-400.hover\:text-gray-700.hover\:bg-gray-100.p-1.rounded-md.gap-2.ml-auto.flex {
+        position: absolute;
+        left: 13% !important;
+        bottom: -115% !important;         
+    }
+
+/* Change the "Listen" Icon Position */  
+    
+    .cursor-pointer.curs.disabled\:dark\:hover\:text-gray-400.dark\:hover\:text-gray-200.dark\:hover\:bg-gray-700.dark\:text-gray-400.hover\:text-gray-700.hover\:bg-gray-100.rounded-md.p-1 {
+        position: absolute;
+        right: -3% !important;
+        bottom: -120% !important;        
+    } 
+
+
+/* Change the shape of ChatGPT and User Avatar to Rounded */ 
+
+    .rounded-sm {
+        border-radius: 6px;
+    }
+
+
+/* Sidebar Redesign */
+
+    /* Sidebar */
+
+        #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.absolute.bottom-0.left-0.w-full.border-t.md\:border-t-0.dark\:border-white\/20.md\:border-transparent.md\:dark\:border-transparent.md\:bg-vert-light-gradient.bg-white.dark\:bg-gray-800.md\:\!bg-transparent.dark\:md\:bg-vert-dark-gradient > form > div > div.flex.flex-col.w-full.py-2.flex-grow.md\:py-3.md\:pl-4.relative.border.border-black\/10.bg-white.dark\:border-gray-900\/50.dark\:text-white.dark\:bg-gray-700.rounded-md.shadow-\[0_0_10px_rgba\(0\,0\,0\,0\.10\)\].dark\:shadow-\[0_0_15px_rgba\(0\,0\,0\,0\.10\)\] {
+            backdrop-filter: blur(5px) saturate(100%);
+            -webkit-backdrop-filter: blur(1px) saturate(200%);
+            background-color: rgba(32, 33, 35, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(67, 69, 71, .7);
+            color: rgb(255, 255, 255);
+        }   
+
+        #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.absolute.bottom-0.left-0.w-full.border-t.md\:border-t-0.dark\:border-white\/20.md\:border-transparent.md\:dark\:border-transparent.md\:bg-vert-light-gradient.bg-white.dark\:bg-gray-800.md\:\!bg-transparent.dark\:md\:bg-vert-dark-gradient > form > div > div.ml-1.mt-1\.5.md\:w-full.md\:m-auto.md\:flex.md\:mb-2.gap-2.justify-center > button {
+            backdrop-filter: blur(5px) saturate(100%);
+            -webkit-backdrop-filter: blur(1px) saturate(200%);
+            background-color: rgba(32, 33, 35, 0.2);
+            border-radius: 122px;
+            border: 1px solid rgba(54, 55, 57, .7);
+            color: rgb(255, 255, 255);
+        }    
+    
+        .rounded-sm {
+            border-radius: 6px;
+        }
+
+    /* Navigation Menu */
+
+        @keyframes grow {
+            from {
+                height: 0%;
+            }
+            10% {
+                height: 20%;
+            }
+            to {
+                height: 60%;
+            }
+        }
+    
+            nav .flex-col > .flex-col > a {
+                transition: background 100ms;
+            }
+
+            nav .flex-col > .flex-col > ::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 4px;
+                height: 0%;
+                background: var(--accent-color);
+                border-radius: 10px;
+            }
+            nav .flex-col > .flex-col > [class*="bg-gray-"]::before {
+                height: 60%;
+                animation: grow ease-in 150ms;
+            }
+
+            nav > :nth-child(5)[href] {
+                margin-top: calc(44px + 2*.25rem*(1 - var(--tw-space-y-reverse))) !important;
+            }
+    
+    /* Add Compatibility for Light Modes*/
+    
+        html.light .dark {
+            background: #D9D9E3;
+        } 
+    
+        html.light .dark a {
+            color: #000;
+        }
+
+        html.light .dark a .from-gray-800,
+        html.light .dark a .from-gray-900 {
+            --tw-gradient-from: #D9D9E3;
+            --tw-gradient-to: #00000000;
+        } 
+    
+        html.light .dark a:hover .from-gray-800,
+        html.light .dark a:hover .from-gray-900 {
+            --tw-gradient-from: #00000000;
+            --tw-gradient-to: #00000000;
+        }
+    
+        html.light button.hover\:text-white {
+            color: #9090a1;
+        }
+    
+        html.light button.hover\:text-white:hover {
+            color: #6e6e8e;
+        }
+    
+        html.light .bg-yellow-200,
+        html.light .dark a:hover {
+            background-color: #f7f7f8;
+        }
+
+        html.light .dark .bg-gray-800 {
+            background-color: #ffff;
+        }
+
+        html.light .dark .bg-gray-800 .from-gray-800 {
+            --tw-gradient-from: #ffff;
+            --tw-gradient-to: #00000000;
+        }
+
+        html.light #__next > div > div:nth-child(2) {
+            border-right: 1px #d4d4ea solid;
+        }
+
+        html.light .overflow-y-auto {
+            border-bottom: 1px #d4d4ea solid;
+        }
+    
+        html.light .dark\:bg-\[\#444654\],
+        html.light .dark\:prose-invert.break-words.w-full.prose.markdown {
+            --tw-bg-opacity: 1;
+            background-color: #F7F7F8;
+        }    
+
+        html.light .dark .text-white.text-left.grow {
+            color: #000;
+        }     
+    
+        html.light .dark .group-ui-open\:bg-gray-800.hover\:bg-gray-800.duration-200.transition-colors.text-sm.py-3.px-3.rounded-md.gap-2\.5.items-center.w-full.flex {
+            background: #D9D9E3;
+        }    
+    
+        html.light .dark .translate-y-0.opacity-100.outline-none.pt-1.pb-1\.5.bg-gray-950.rounded-md.overflow-hidden.w-full.mb-2.z-20.left-0.bottom-full.absolute {
+            background: #D9D9E3;
+        }
+
+        .bg-white\/20.h-px.my-1\.5 {
+            border-radius: 6px;
+            border: 1px solid #000;        
+        }
+    
+        html.light .dark #code-header > span {
+            color: #000;   
+        }
+    
+        html.light .dark #copy-code > .w-4.h-4 {
+            filter: brightness(0%);   
+        }
+    
+        html.light .dark .gap-2.ml-auto.flex {
+            color: #000;   
+        }
+
+
+    /* Add Compatibility for Dark Modes */
+
+        html.dark .translate-y-0.opacity-100.outline-none.pt-1.pb-1\.5.bg-gray-950.rounded-md.overflow-hidden.w-full.mb-2.z-20.left-0.bottom-full.absolute {
+            background: #202123;
+        }
+
+
+/* New Chat Dark Mode Redesign */
+    
+    #__next > div > div.dark.hidden.bg-gray-900.md\:fixed.md\:inset-y-0.md\:flex.md\:w-\[260px\].md\:flex-col > div > div > nav > a.flex.py-3.px-3.items-center.gap-3.rounded-md.hover\:bg-gray-500\/10.transition-colors.duration-200.text-white.cursor-pointer.text-sm.mb-2.flex-shrink-0.border.border-white\/20 {
+        background: linear-gradient( to top right,rgba(156,204,101 ,1) 0%, rgba(38,198,218 ,1) 50%);
+        box-shadow: 1px 1px 10px rgba(38,198,218 ,0.9);
+        /*    width: 440px; height: 440px; border-radius: 25rem; background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(ellipse at 70% 60%, #c3e060 0%, rgba(195, 224, 96, 0) 90%), radial-gradient(ellipse at 30% 30%, #c3e060 0%, rgba(195, 224, 96, 0) 60%), radial-gradient(ellipse at bottom left,  #00a3cb 0%,  rgba(0, 163, 203, 0) 70%), linear-gradient(135deg, rgba(18, 46, 119, 0) 0%, rgba(18, 46, 119, 0) 0.75, #122e77 100%), linear-gradient(to right, #625793 0%, #d55d64 35%, #e49129 65%, #c0671c 100%); background-blend-mode: lighten,saturation,screen,color,color-dodge,multiply; filter: blur(100px);
+*/;
+    }
+
+    #__next > div > div.dark.hidden.bg-gray-900.md\:fixed.md\:inset-y-0.md\:flex.md\:w-\[260px\].md\:flex-col > div > div > nav > a.flex.py-3.px-3.items-center.gap-3.rounded-md.hover\:bg-gray-500\/10.transition-colors.duration-200.text-white.cursor-pointer.text-sm.mb-2.flex-shrink-0.border.border-white\/20:hover {
+    opacity: 90%;
+    }
+
+    #__next > div > div.dark.hidden.bg-gray-900.md\:fixed.md\:inset-y-0.md\:flex.md\:w-\[260px\].md\:flex-col > div > div > nav > a.flex.py-3.px-3.items-center.gap-3.rounded-md.hover\:bg-gray-500\/10.transition-colors.duration-200.text-white.cursor-pointer.text-sm.mb-2.flex-shrink-0.border.border-white\/20 span {
+        color: #d1d5db;
+        font-size: 18px;
+        font-weight: 100;
+    }
+
+    #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 {
+        color: #d1d5db;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    #__next > div.overflow-hidden.w-full.h-full.relative > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 > div {
+        color: #d1d5db;
+        font-size: 18px;
+        font-weight: 400;
+    }
+      
+
+/*///////////////////////////////////////////////////////////////////////* FIREFOX CODE *\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\        
+        
+/* Code for Firefox */
+        
+    ::-moz-selection
+    {
+        background: #d3d3ce2b;
+    }
+
+    ::selection {
+        background: #d3d3ce2b;
+    }
+
+    #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div {
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+
+    #__next > div > div.dark.hidden.bg-gray-900.md\:fixed.md\:inset-y-0.md\:flex.md\:w-\[260px\].md\:flex-col {
+        padding-left: 40px;
+        width: 290px;
+        padding-top: 40px;
+    }
+
+    #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div {
+        background: #202123;
+    }
+
+    .dark .dark\:bg-gray-800\/75 {
+        background-color: rgb(24,23,23,0.75);
+    }
+
+    #headlessui-dialog-panel-\:r8\: {
+        backdrop-filter: blur(5px) saturate(100%);
+        -webkit-backdrop-filter: blur(1px) saturate(100%);
+        background-color: rgba(32, 33, 35, 0.2);
+        border-radius: 12px;
+        border: 1px solid rgba(67, 69, 71, .7);
+        color: rgb(255, 255, 255);
+    }
+    
+    
+/* Code Block */
+    
+    #__next > div.overflow-hidden.w-full.h-full.relative > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 > div > div > pre > div > div.p-4.overflow-y-auto {
+        background-color: #28292c;
+    }
+
+        :not(pre)>code.hljs, :not(pre)>code[class*=language-]
+    {
+        
+        font-size: 14px;
+    }
+    
+    
+/* Code Block 2 */
+    
+  #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 > div > div > pre > div > div.p-4.overflow-y-auto {
+        background-color: #28292c; }
+        :not(pre)>code.hljs, :not(pre)>code[class*=language-]
+    {
+      
+        font-size: 14px;
+    }
+    
+    
+/* Topbar Code Block*/
+    
+    #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 > div > div > pre > div > div.flex.items-center.relative.text-gray-200.bg-gray-800.px-4.py-2.text-xs.font-sans {
+        background-color: #353638;
+    }
+    
+    
+/* Topbar 2 Code Block */
+    
+  #__next > div > div.flex.h-full.flex-1.flex-col.md\:pl-\[260px\] > main > div.flex-1.overflow-hidden > div > div > div > div > div > div.relative.flex.w-\[calc\(100\%-50px\)\].md\:flex-col.lg\:w-\[calc\(100\%-115px\)\] > div.flex.flex-grow.flex-col.gap-3 > div > div > pre > div > div.flex.items-center.relative.text-gray-200.bg-gray-800.px-4.py-2.text-xs.font-sans {
+        background-color: #353638;
+    } 
+
+
+/*/////////////////////////////////////////////////////////////////* EXTENSION COMPATIBILITY *\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\ 
+
+
+/* Superpower ChatGPT */
+
+    /* Add Compatibility for Light Modes */
+
+        html.light .p-4.rounded-md.border-gray-500.border.justify-center.items-start.flex-col.flex {
+            background-color: #2D3748; 
+        }          
+
+        html.light .dark .bg-gray-900.break-all.overflow-hidden.text-ellipsis.font-medium.text-gray-500.text-xs.px-3.pt-3.pb-2.h-9 {
+            background: #D9D9E3;
+        }
+    
+        html.light .dark .group.bg-gray-900.hover\:pr-4.break-all.cursor-pointer.hover\:bg-\[\#2A2B32\].rounded-md.relative.gap-3.items-center.px-3.py-3.flex {
+            background: #D9D9E3;
+        }
+
+        html.light .flex-shrink-0.mb-1.hover\:bg-gray-500\/10.border-white\/20.border.rounded-md.text-sm.cursor-pointer.text-white.duration-200.transition-colors.gap-3.items-center.px-3.py-3.flex,
+        html.light #my-prompt-history-button,
+        html.light #community-prompts-button,
+        html.light .mt-1.border-white\/20.border.flex-shrink-0.mb-2.text-sm.cursor-pointer.text-white.duration-200.transition-colors.hover\:bg-gray-500\/10.rounded-md.gap-3.items-center.px-3.py-3.flex.menu-item,
+        html.light .border-white\/20.border-b {
+            border-radius: 6px;
+            border: 1px solid #000;        
+        }
+
+        /* Change the "One-click prompts" Menu Color */
+
+            .wcg-slash-commands-menu {
+                position: absolute;
+                bottom: 185px !important;   
+            }
+
+            /* Add Compatibility for Chromium Based Browsers*/
+
+                html.light .dark .conversation-search.bg-gray-800.sm\:text-sm.focus\:border-indigo-500.focus\:ring-indigo-500.focus\:outline-none.shadow-sm.rounded-md.border-gray-300.border.py-2.px-4.w-full {
+                    color: #000; 
+                }
+    
+                html.light .dark .rounded-md.relative.gap-3.items-center.w-full.pr-3.px-3.py-3.flex,
+                html.light .dark .relative.break-all.overflow-hidden.max-h-5.text-ellipsis.flex-1 {
+                    color: #000;             
+                }    
+    
+                html.light .dark .h-4.w-4 {
+                    filter: brightness(0%);        
+                }
+    
+                html.light .dark #folder-trash > .h-4.w-4 {
+                    filter: brightness(0%);
+                }                              
+    
+                html.light .dark .text-white.relative.break-all.overflow-hidden.max-h-5.text-ellipsis.flex-1 {
+                    color: #000;
+                }        
+    
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/my-prompt-history.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/community-prompts.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/settings.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/export-all.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/newsletter.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/my-prompt-history.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/community-prompts.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/settings.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/export-all.png"],
+                html.light .dark [src="chrome-extension://amhmeenmapldpjdedekalnfifgnpfnkc/icons/newsletter.png"]{
+                    filter: brightness(0%);
+                }        
+    
+                html.light .dark .text-gray-100.h-4.w-4 {
+                    filter: brightness(0%);
+                }  
+
+            /* Add Compatibility for Mozilla Firefox Browsers */    
+    
+                html.light .dark [src="moz-extension://0b641b61-d3d2-4509-86fb-99ec1a38eaf0/icons/my-prompt-history.png"],
+                html.light .dark [src="moz-extension://0b641b61-d3d2-4509-86fb-99ec1a38eaf0/icons/community-prompts.png"],
+                html.light .dark [src="moz-extension://0b641b61-d3d2-4509-86fb-99ec1a38eaf0/icons/settings.png"],
+                html.light .dark [src="moz-extension://0b641b61-d3d2-4509-86fb-99ec1a38eaf0/icons/export-all.png"],
+                html.light .dark [src="moz-extension://0b641b61-d3d2-4509-86fb-99ec1a38eaf0/icons/newsletter.png"] {
+                    filter: brightness(0%);
+                }
+
+
+    /* Change the Position, Width and Color of "Chat History & Training" Button */
+    
+    .p-4.rounded-md.border-gray-500.border.justify-center.items-start.flex-col.flex {
+        position: absolute;
+        bottom: 37%;
+        min-width: 40rem;
+        max-width: 40rem;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    /* Change the "Export" Button Position */
+
+    #export-conversation-button {
+        position: absolute;
+        left: 19.4%;
+        padding-left: 40px !important; 
+        padding-right: 40px !important;
+    }
+
+    /* Change the "Sync Refresh" Bar Color */
+    
+    #sync-refresh-button > svg,
+    .z-50.left-0.bottom-0.absolute {
+        color: #f7c86c !important;   
+    }
+
+/* ChatGPT Exporter */ 
+
+    /* Change the "Export" Button Menu Color */
+    
+    html.light .dark .mt-1.border-white\/20.border.flex-shrink-0.mb-2.text-sm.cursor-pointer.text-white.duration-200.transition-colors.hover\:bg-gray-500\/10.rounded-md.gap-3.items-center.px-3.py-3.flex.menu-item {
+     color: #000;   
+    }
+    
+    
+/* editGPT */ 
+
+    /* Change the "editGPT" Button Postion */
+    
+    #editgpt-btn {
+        position: absolute;
+        right: 13.9%;
+    }
+
+    
+/* ChatGPT Widescreen Mod */       
+
+    /* Change the "New chat" Button Postion */
+
+    #newChat-button {
+        position: absolute;
+        right: 25.5% !important;
+        bottom: 13% !important;        
+    }
+
+    /* Change the"Wide screen" Button Postion*/
+    
+    #wideScreen-button {
+        position: absolute;
+        right: 20.5% !important;
+        bottom: 14% !important;        
+    }
+
+    /* Change the "Full-window mode" Button Postion */
+    
+    #fullWindow-button {
+        position: absolute;
+        right: 15.5% !important;
+        bottom: 14% !important;
+    }
+
+    /* Change the "Full screen" Button Postion */
+    
+    #fullScreen-button {
+        position: absolute;
+        right: 10.5% !important;
+        bottom: 14% !important;        
+    }
+
+
+/* WebChatGPT: ChatGPT with internet access */
+
+    /* Add Compatibility for Light Modes */
+
+        /* Change the Menu Color of "One-click prompts" Button */
+
+            html.light .dark wcg-h-4 wcg-w-4 wcg-shrink-0 {
+            filter: brightness(0%); 
+            }
+
+            html.light .dark #webchatgpt-prompt-switch {
+                color: #000;   
+            }
+    
+    
+}
